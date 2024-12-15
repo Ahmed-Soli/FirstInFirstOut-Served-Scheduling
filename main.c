@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include "queue.h"
 int isValid(char *);
 void setNumProcess(int *);
@@ -41,8 +42,8 @@ void setNumProcess(int *np)
 {
     char nps[10];
     printf("Enter Number of Processes:");
-    scanf("%s",&nps);
-    if (!isValid(&nps))
+    scanf("%s",nps);
+    if (!isValid(nps))
     {
         printf("Please enter number of process in correct positive format\n");
         setNumProcess(np);
@@ -61,7 +62,7 @@ void setProcessDetail(int np,Queue *prq)
     while(i < np)
     {
         scanf("%s %s",pids,burts);
-        if (isValid(&pids) && isValid(&burts))
+        if (isValid(pids) && isValid(burts))
         {
             p.pid=atoi(pids);
             p.burst=atoi(burts);
